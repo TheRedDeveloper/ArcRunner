@@ -24,6 +24,9 @@ Your ArcRunner binary is in `target/release/ArcRunner.exe`.
 Refer to [Setup ArcRunner](README.md#setup-arcrunner).
 
 # Setup ArcRunner
+> [!WARNING]  
+> Set Arc as the default browser before the setup process. If you don't do this, you might break your other browser.
+
 Move `ArcRunner.exe` wherever you'd like.
 > [!NOTE]  
 > If you move `ArcRunner.exe` again, you will have to go through the setup process again.
