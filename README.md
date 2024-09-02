@@ -7,7 +7,7 @@ This is very useful for running Arc with [PowerToys Run](https://github.com/micr
 
 ## Downloading
 Download the latest `ArcRunner.exe` from [here](https://github.com/TheRedDeveloper/ArcRunner/releases/latest).
-Refer to [Setup ArcRunner](README.md#install-arcrunner).
+Refer to [Setup ArcRunner](README.md#setup-arcrunner).
 
 ## Building
 Clone the repository:
@@ -21,7 +21,7 @@ cargo build --release
 ```
 
 Your ArcRunner binary is in `target/release/ArcRunner.exe`.
-Refer to [Setup ArcRunner](README.md#install-arcrunner).
+Refer to [Setup ArcRunner](README.md#setup-arcrunner).
 
 # Setup ArcRunner
 Move `ArcRunner.exe` wherever you'd like.
