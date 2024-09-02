@@ -1,0 +1,9 @@
+[package]
+name = "ArcRunner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+url = "2.2"
+glob = "0.3"
+winreg = "0.52.0"
