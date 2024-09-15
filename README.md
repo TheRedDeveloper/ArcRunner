@@ -1,5 +1,8 @@
 # About ArcRunner
 
+> [!CAUTION]
+> Currently broken see [issue #1](https://github.com/TheRedDeveloper/ArcRunner/issues/1)
+
 Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc.
 This is very useful for running Arc with [PowerToys Run](https://github.com/microsoft/PowerToys) as it won't otherwise work.
 
