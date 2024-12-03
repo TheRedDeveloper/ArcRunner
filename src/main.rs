@@ -4,6 +4,9 @@ use url::{Url, form_urlencoded};
 use glob::glob;
 use winreg::enums::*;
 use winreg::RegKey;
+use serde_json::Value;
+use std::fs;
+use std::path::PathBuf;
 
 fn main() {
     let input: String = env::args().skip(1).collect::<Vec<String>>().join(" ");
@@ -22,7 +25,7 @@ fn main() {
         let search_query = form_urlencoded::byte_serialize(input[1..].trim().as_bytes()).collect::<String>();
         format!("https://www.google.com/search?q={}", search_query)
     } else {
-        input
+        input.trim_start_matches("--single-argument ").to_string()
     };
 
     if let Ok(parsed_url) = Url::parse(&url) {
@@ -33,10 +36,10 @@ fn main() {
                 .spawn()
                 .expect("Failed to open URL");
         } else {
-            panic!("Invalid URL scheme.");
+            panic!("Invalid URL scheme: {}", parsed_url.scheme());
         }
     } else {
-        panic!("Invalid URL format.");
+        panic!("Invalid URL format: {}", url);
     }
 }
 
@@ -67,6 +70,36 @@ fn open_arc_browser() {
 }
 
 fn install_arcrunner() {
+    let exe_path = env::current_exe()
+        .expect("Failed to get current executable path")
+        .display()
+        .to_string();
+
+    let mut search_shortcuts_path = PathBuf::from(env::var("LOCALAPPDATA").expect("Failed to get LOCALAPPDATA"));
+    search_shortcuts_path.push("Microsoft/PowerToys/PowerToys Run/Settings/Plugins/Community.PowerToys.Run.Plugin.WebSearchShortcut/WebSearchShortcutStorage.json");
+
+    if search_shortcuts_path.exists() {
+        let mut json_data: Value = serde_json::from_str(
+            &fs::read_to_string(&search_shortcuts_path).expect("Failed to read WebSearchShortcutStorage.json"),
+        ).expect("Failed to parse JSON");
+        if let Value::Object(ref mut map) = json_data {
+            for (_, value) in map.iter_mut() {
+                if let Value::Object(ref mut search_shortcut) = value {
+                    search_shortcut.insert("BrowserPath".to_string(), Value::String(exe_path.clone()));
+                } else {
+                    panic!("Unexpected JSON format in WebSearchShortcutStorage.json");
+                }
+            }
+        } else {
+            panic!("Unexpected JSON format in WebSearchShortcutStorage.json");
+        }
+        fs::write(
+            &search_shortcuts_path,
+            serde_json::to_string_pretty(&json_data).expect("Failed to serialize modified JSON"),
+        ).expect("Failed to write updated WebSearchShortcutStorage.json");
+        println!("WebSearchShortcutStorage.json updated successfully.");
+    }
+
     let hkcu = RegKey::predef(HKEY_CURRENT_USER);
     let user_choice_key = hkcu
         .open_subkey("Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice")
@@ -82,14 +115,9 @@ fn install_arcrunner() {
         .open_subkey_with_flags(&shell_open_command_key_path, KEY_WRITE)
         .expect("Failed to open shell\\open\\command registry key");
 
-    let exe_path = env::current_exe()
-        .expect("Failed to get current executable path")
-        .display()
-        .to_string();
-
     shell_open_command_key
         .set_value("", &exe_path)
         .expect("Failed to set shell\\open\\command (Default) value");
     
-    println!("ArcRunner installed successfully.");
+    println!("ArcRunner probably installed successfully.");
 }
