@@ -63,6 +63,32 @@ fn install_arcrunner() {
         .display()
         .to_string();
 
+    let search_shortcuts_path = PathBuf::from(&localappdata).join("Microsoft/PowerToys/PowerToys Run/Settings/Plugins/Community.PowerToys.Run.Plugin.WebSearchShortcut/WebSearchShortcutStorage.json");
+    
+    if search_shortcuts_path.exists() {
+        let mut json_data: Value = serde_json::from_str(
+            &fs::read_to_string(&search_shortcuts_path).expect("Failed to read WebSearchShortcutStorage.json"),
+        ).expect("Failed to parse JSON");
+        if let Value::Object(ref mut map) = json_data {
+            for (_, value) in map.iter_mut() {
+                if let Value::Object(ref mut search_shortcut) = value {
+                    search_shortcut.insert("BrowserPath".to_string(), Value::String(exe_path.clone()));
+                } else {
+                    panic!("Unexpected JSON format in WebSearchShortcutStorage.json");
+                }
+            }
+        } else {
+            panic!("Unexpected JSON format in WebSearchShortcutStorage.json");
+        }
+        fs::write(
+            &search_shortcuts_path,
+            serde_json::to_string_pretty(&json_data).expect("Failed to serialize modified JSON"),
+        ).expect("Failed to write updated WebSearchShortcutStorage.json");
+        println!("WebSearchShortcutStorage.json updated successfully.");
+    } else {
+        eprint!("Not installed for PowerToys Run WebSearchShortcut. WebSearchShortcut not found at {}.", search_shortcuts_path.display());
+    }
+
     let app_data_path = env::var("APPDATA").expect("Failed to get APPDATA environment variable");
     let flow_settings_path = PathBuf::from(&app_data_path).join("FlowLauncher/Settings/Settings.json");
 
@@ -113,7 +139,7 @@ fn install_arcrunner() {
 
         println!("FlowLauncher's Settings.json updated successfully!");
     } else {
-        eprintln!("Flow Launcher's Settings.json not found at {}.", flow_settings_path.display());
+        eprintln!("Not installed for Flow Launcher: Flow Launcher's Settings.json not found at {}.", flow_settings_path.display());
     }
 
     if should_relaunch {
