@@ -1,10 +1,11 @@
 # About ArcRunner
 
 > [!CAUTION]
-> Currently broken see [issue #1](https://github.com/TheRedDeveloper/ArcRunner/issues/1)
+> Won't work for Power Toys Run
 
 Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc.
-This is very useful for running Arc with [PowerToys Run](https://github.com/microsoft/PowerToys) as it won't otherwise work.
+This is very useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) as it won't otherwise work.
+Just run `ArcRunner.exe` and it will set itself up to be used by [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
 # Get ArcRunner
 
@@ -28,21 +29,18 @@ Refer to [Setup ArcRunner](README.md#setup-arcrunner).
 
 # Setup ArcRunner
 > [!WARNING]  
-> Set Arc as the default browser before the setup process. If you don't do this, you might break your other browser.
+> Arc needs to be set as the default browser.
 
 Move `ArcRunner.exe` wherever you'd like.
 > [!NOTE]  
-> If you move `ArcRunner.exe` again, you will have to go through the setup process again.
+> If you move `ArcRunner.exe` again, you will have to run it again.
 
-Open a terminal where you moved `ArcRunner.exe` and run:
-```batch
-ArcRunner.exe install
-```
+**Just run ArcRunner.exe**, and it will set Arc as your Browser in Flow Launcher.
+It just works!
+
 > [!IMPORTANT]  
 > `ArcRunner.exe` is NOT a virus. You can view and build the code yourself.
 > Create an exception if your AntiVirus is overly aggressive and detects ArcRunner as an infected file.
-
-If you installed ArcRunner successfully, you can now use Arc with [PowerToys Run](https://github.com/microsoft/PowerToys) and other applications.
 
 # How to use ArcRunner
 `ArcRunner.exe` supports `[url]` and `? [search query]` as an argument.
