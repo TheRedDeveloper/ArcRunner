@@ -1,7 +1,7 @@
 # About ArcRunner
 
 > [!CAUTION]
-> Won't work for Power Toys Run. Setting Browswer Path to an invalid one will also just work in [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
+> Won't work for Power Toys Run. Setting your Browser Path to an invalid one will also just work in [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
 Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc. This can be useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
