@@ -3,7 +3,7 @@
 > [!CAUTION]
 > Won't work for Power Toys Run
 
-Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc. This is very useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) as it won't otherwise work.
+Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc. This is very useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
 **Just run `ArcRunner.exe`** and it will set itself up to be used by [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
