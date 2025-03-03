@@ -84,9 +84,9 @@ fn install_arcrunner() {
             &search_shortcuts_path,
             serde_json::to_string_pretty(&json_data).expect("Failed to serialize modified JSON"),
         ).expect("Failed to write updated WebSearchShortcutStorage.json");
-        println!("WebSearchShortcutStorage.json updated successfully.");
+        println!("WebSearchShortcutStorage.json updated successfully!");
     } else {
-        eprint!("Not installed for PowerToys Run WebSearchShortcut. WebSearchShortcut not found at {}.", search_shortcuts_path.display());
+        eprint!("Not installed for PowerToys Run WebSearchShortcut: WebSearchShortcut not found at {}.", search_shortcuts_path.display());
     }
 
     let app_data_path = env::var("APPDATA").expect("Failed to get APPDATA environment variable");

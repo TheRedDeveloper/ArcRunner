@@ -1,11 +1,11 @@
 # About ArcRunner
 
 > [!CAUTION]
-> Won't work for Power Toys Run. Setting your Browser Path to an invalid one will also just work in [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
+> Won't work for Power Toys Run itself only for the WebSearchShortcut plugin. Setting your Browser Path to an invalid one will also just work in [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
 
-Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc. This can be useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
+Arc.exe accepts no arguments. ArcRunner.exe enables you to run Arc with arguments, just like with Chrome, Firefox, etc. This can be useful for running Arc with [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) or [PowerToys Run WebSearchShortcut](https://github.com/Daydreamer-riri/PowerToys-Run-WebSearchShortcut).
 
-**Just run `ArcRunner.exe`** and it will set itself up to be used by [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher).
+**Just run `ArcRunner.exe`** and it will set itself up to be used by [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) and [PowerToys Run WebSearchShortcut](https://github.com/Daydreamer-riri/PowerToys-Run-WebSearchShortcut).
 
 # Get ArcRunner
 
@@ -33,9 +33,9 @@ Move `ArcRunner.exe` wherever you'd like.
 > [!NOTE]  
 > If you move `ArcRunner.exe` again, you will have to run it again.
 
-**Just run ArcRunner.exe**, and it will set Arc as your Browser in Flow Launcher. It just works!
+**Just run ArcRunner.exe**, and it will set Arc as your Browser in [Flow Launcher](https://github.com/Flow-Launcher/Flow.Launcher) and [PowerToys Run WebSearchShortcut](https://github.com/Daydreamer-riri/PowerToys-Run-WebSearchShortcut). It just works!
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > `ArcRunner.exe` is NOT a virus. You can view and build the code yourself. Create an exception if your AntiVirus is overly aggressive and detects ArcRunner as an infected file.
 
 # How to use ArcRunner
